@@ -1,6 +1,15 @@
 class TweetsController < ApplicationController
-  before_action :set_tweet, only: [:show, :edit, :update, :destroy]
+  before_action :set_tweet, only: [:show, :edit, :update, :destroy, :like]
 
+  def like
+    @tweet.likes = @tweet.likes+1
+    if @tweet.save
+      respond_to do |format|
+      format.html { redirect_to tweets_url, notice: 'You liked correctly' }
+      format.json { head :Forbidden }
+      end
+  end
+end
   # GET /tweets
   # GET /tweets.json
   def index
