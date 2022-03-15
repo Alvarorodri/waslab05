@@ -1,6 +1,5 @@
 <body class = "wotbody">
-<h1 class="wottitle">Wall of Tweets -RoR Edition 2022</h1>
-<br>
+<h1 class="wottitle">Wall of Tweets - RoR Edition 2022</h1>
 <div class="walltweet">
   <form action="/tweets" accept-charset="UTF-8" method="post">
     <input type="hidden" name="authenticity_token" value="V3M0VLW93lv3xNHlbdQWvfft_tf9YhQRuvh75GQg5NSjzvFuKM3EBXH65WN5GiGu15ED1PdX-8c_dfjgCUfp_w">
@@ -12,9 +11,15 @@
   </form>
 </div>
 
-<div class="wotitem" id="notice"><%= notice %></div>
+<div id="notice"><%= notice %></div>
 <br>
+    <% a = "data" %>
     <% @tweets.each do |tweet| %>
+
+        <% if a != tweet.created_at.strftime("%Y-%d-%m")%>
+          <% a = tweet.created_at.strftime("%Y-%d-%m") %>
+          <h3>...... <%= tweet.created_at.strftime("%A, %B %d, %Y") %></h3>
+        <%end%>
         <tr>
           <div class="wotitem" id=tweet.id>
             <div class="likes">
@@ -26,8 +31,7 @@
                   <br>
                   <h3>
                     <td><%= link_to 'like', like_tweet_path(tweet), method: :put %></td>
-                  <!--<a rel="nofollow" href=like_tweet_path(tweet) data-method="put" >like</a>-->
-                  </h3>
+                    </h3>
                 </span>
               </span>
             </div>
@@ -35,7 +39,7 @@
             <div class="item">
               <h4>
                 <em><%= tweet.author %></em>
-                @ <%= tweet.created_at %>
+                @ <%= tweet.created_at.strftime("%H:%M") %>
               </h4>
               <p><%= tweet.content %></p>
               <p style="text-align: right;">
