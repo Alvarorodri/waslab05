@@ -1,5 +1,4 @@
-<p id="notice"><%= notice %></p>
-
+<body class = "wotbody">
 <h1 class="wottitle">Wall of Tweets -RoR Edition 2022</h1>
 <br>
 <div class="walltweet">
@@ -7,27 +6,13 @@
     <input type="hidden" name="authenticity_token" value="V3M0VLW93lv3xNHlbdQWvfft_tf9YhQRuvh75GQg5NSjzvFuKM3EBXH65WN5GiGu15ED1PdX-8c_dfjgCUfp_w">
   <table border="0" cellpadding ="2">
     <tbody>
-      <tr>
-      <td> Your name:</td>
-      <td>
-        <input size="70" type="text" name="tweet[author]" id="tweet_author">
-      </td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>Your tweet:</td>
-      <td>
-        <textarea rows="2" cols="70" name="tweet[content]" id="tweet_content">
-      </textarea>
-      <td>
-        <input type="submit" name="commit" value="Tweet!" data-disable-with="Tweet!">
-        </td>
-      </td>
-    </tr>
+      <%= render 'form', tweet: Tweet.new %>
     </tbody>
   </table>
   </form>
 </div>
+
+<div class="wotitem" id="notice"><%= notice %></div>
 <br>
     <% @tweets.each do |tweet| %>
         <tr>
@@ -62,5 +47,5 @@
       
     <% end %>
   </tbody>
-
 <br>
+</body>

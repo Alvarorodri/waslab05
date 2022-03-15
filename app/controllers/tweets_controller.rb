@@ -42,10 +42,10 @@ end
         else
           session[:created_ids].insert(0, @tweet.id)
         end
-        format.html { redirect_to @tweet, notice: 'Tweet was successfully created.' }
+        format.html { redirect_to tweets_url, notice: 'Tweet was successfully created.' }
         format.json { render :show, status: :created, location: @tweet }
       else
-        format.html { render :new }
+        format.html { redirect_to tweets_url }
         format.json { render json: @tweet.errors, status: :unprocessable_entity }
       end
     end
@@ -58,7 +58,7 @@ end
   def update
     respond_to do |format|
       if @tweet.update(tweet_params)
-        format.html { redirect_to @tweet, notice: 'Tweet was successfully updated.' }
+        format.html { redirect_to tweets_url, notice: 'Tweet was successfully updated.' }
         format.json { render :show, status: :ok, location: @tweet }
       else
         format.html { render :edit }

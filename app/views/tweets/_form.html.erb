@@ -10,18 +10,21 @@
       </ul>
     </div>
   <% end %>
+  <tr>
+    <div class= "field">
+    <td><%= form.label "Your name:" %></td>
+    <td><%= form.text_field :author, :size => "70" %> </td>
+    <td></td>
+    </div>
+  </tr>
+  <tr>
+    <div class= "field">
+    <td><%= form.label "Your tweet:" %></td>
+    <td><%= form.text_area :content, cols: 70, rows: 2 %></td>
+    </div>
+    <td><div class="actions"><%= form.submit "Tweet!" %></div></td>
+  </tr>
+  
 
-  <div class="field">
-    <%= form.label :author %>
-    <%= form.text_field :author %>
-  </div>
-
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  
 <% end %>
