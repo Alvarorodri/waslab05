@@ -10,8 +10,14 @@
   </table>
   </form>
 </div>
-
-<div id="notice"><%= notice %></div>
+<% if !notice.nil? || !alert.nil?  %>
+  <% if !notice.nil? %>
+    <div class="wotitem" id="notice"><%= notice %></div>
+  <%end%>
+  <%if !alert.nil?%>
+    <div class="wotitem" id="alert"><%= alert %></div> 
+  <%end%>
+<%end%>
 <br>
     <% a = "data" %>
     <% @tweets.each do |tweet| %>

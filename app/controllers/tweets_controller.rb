@@ -34,7 +34,7 @@ end
   # POST /tweets.json
   def create
     @tweet = Tweet.new(tweet_params)
-
+    
     respond_to do |format|
       if @tweet.save
         if session[:created_ids].nil?
@@ -72,7 +72,7 @@ end
   def destroy
     if session[:created_ids].nil? or !session[:created_ids].index(@tweet.id)
       respond_to do |format|
-      format.html { redirect_to tweets_url, notice: 'You are not allowed to delete this tweet' }
+      format.html { redirect_to tweets_url, alert: 'You are not allowed to delete this tweet' }
       format.json { head :Forbidden }
       end
     else 

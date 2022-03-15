@@ -5,6 +5,7 @@
 
       <ul>
         <% tweet.errors.each do |error| %>
+          <%alert = alert + error.full_message%>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>
