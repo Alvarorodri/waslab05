@@ -45,7 +45,15 @@ end
         format.html { redirect_to tweets_url, notice: 'Tweet was successfully created.' }
         format.json { render :show, status: :created, location: @tweet }
       else
-        format.html { redirect_to tweets_url }
+       a = ""
+        @tweet.errors.each do |error|
+          if a == ""
+           a += error.full_message
+          else
+            a += " and " + error.full_message
+          end
+        end
+        format.html { redirect_to tweets_url, alert: a }
         format.json { render json: @tweet.errors, status: :unprocessable_entity }
       end
     end

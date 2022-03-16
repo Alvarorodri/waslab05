@@ -1,15 +1,15 @@
 <body class = "wotbody">
 <h1 class="wottitle">Wall of Tweets - RoR Edition 2022</h1>
+<br>
 <div class="walltweet">
   <form action="/tweets" accept-charset="UTF-8" method="post">
-    <input type="hidden" name="authenticity_token" value="V3M0VLW93lv3xNHlbdQWvfft_tf9YhQRuvh75GQg5NSjzvFuKM3EBXH65WN5GiGu15ED1PdX-8c_dfjgCUfp_w">
   <table border="0" cellpadding ="2">
-    <tbody>
-      <%= render 'form', tweet: Tweet.new %>
-    </tbody>
+    <%= render 'form', tweet: Tweet.new %>
   </table>
   </form>
 </div>
+
+
 <% if !notice.nil? || !alert.nil?  %>
   <% if !notice.nil? %>
     <div class="wotitem" id="notice"><%= notice %></div>
@@ -18,6 +18,8 @@
     <div class="wotitem" id="alert"><%= alert %></div> 
   <%end%>
 <%end%>
+
+
 <br>
     <% a = "data" %>
     <% @tweets.each do |tweet| %>
@@ -44,8 +46,7 @@
             
             <div class="item">
               <h4>
-                <em><%= tweet.author %></em>
-                @ <%= tweet.created_at.strftime("%H:%M") %>
+                <em><%= tweet.author %></em> @ <%= tweet.created_at.strftime("%H:%M") %>
               </h4>
               <p><%= tweet.content %></p>
               <p style="text-align: right;">
